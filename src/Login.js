@@ -16,21 +16,20 @@ class Login extends Component {
 
 	componentDidMount = () => {
 		if(this.props.isAuth){
-			const from = this.props.location.state.from;
-			this.props.history.push(from.pathname);
+			const pathname = this.props.location.state.from.pathname;
+			this.props.history.push(pathname);
 		}
 	}
 
 	componentDidUpdate = () => {
 		if(this.props.isAuth){
-			const from = this.props.location.state.from;
-			this.props.history.push(from.pathname);
+			const pathname = this.props.location.state.from.pathname;
+			this.props.history.push(pathname);
 		}
 	}
 
 
 	handleChange = (e) => {
-
 		this.setState({[e.target.name] : e.target.value, message: '' });
 	}
 
@@ -63,9 +62,9 @@ class Login extends Component {
 					var userId = res.user.id ? res.user.id : ''
 					localStorage.setItem('userId', userId);
 					if(this.props.isAuth){
-						const {from} = this.props.location.state;
-						if(from.pathname !== '/') {
-							this.props.history.push(from.pathname);
+						const pathname = this.props.location.state.from.pathname;
+						if(pathname !== '/') {
+							this.props.history.push(pathname);
 						} else {
 							this.props.history.push('/home');
 						}
