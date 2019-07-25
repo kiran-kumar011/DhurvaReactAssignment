@@ -64,10 +64,12 @@ class Login extends Component {
 					localStorage.setItem('userId', userId);
 					if(this.props.isAuth){
 						const {from} = this.props.location.state;
-						this.props.history.push(from.pathname);
-					} else {
-						this.props.history.push('/home');
-					}
+						if(from.pathname !== '/') {
+							this.props.history.push(from.pathname);
+						} else {
+							this.props.history.push('/home');
+						}
+					} 
 				}, 1000)
 			}
 		});
