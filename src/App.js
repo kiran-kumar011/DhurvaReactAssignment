@@ -36,14 +36,13 @@ class App extends Component {
 
   
   render() {
-    console.log('.......render verification', this.props.isLoggedIn)
     return (
       <Router>
         <Switch>
           <Route path='/login' component={ Login }></Route>
           <Route path='/signup' component={ Signup }></Route>
           <PrivateRoute  path='/home' component={Home} />
-          <PrivateRoute exact path='/' component={Nav} />
+          <PrivateRoute exact path='/' component={Login} />
           <PrivateRoute  path='/profile' component={Profile} />
         </Switch>
       </Router>
