@@ -10,7 +10,7 @@ class	Profile extends Component {
 	}
 
 	handleClick = (e) => {
-		this.state.tags = this.state.tags.map(tag => {
+		var newTags = this.state.tags.map(tag => {
 			if(e.target.id === tag.tagName) {
 				return {...tag, isClicked: true }
 			} else {
@@ -18,7 +18,7 @@ class	Profile extends Component {
 			}
 		})
 
-		this.setState({tags: this.state.tags, tag: e.target.id});
+		this.setState({tags: newTags, tag: e.target.id});
 	}
 
 	render() {

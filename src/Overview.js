@@ -38,19 +38,19 @@ function Overview(props) {
 					<ul className='social-links'>
 						<li className='user-social-list'>
 							<i class="fab fa-google-plus-square"/>
-							<a href='#'>@{props.user.name}</a>
+							<a href='#google-plus'>@{props.user.name}</a>
 						</li>
 						<li className='user-social-list'>
 							<i class="fab fa-twitter-square"/>
-							<a href='#'>t_{props.user.name}</a>
+							<a href='#twitter'>t_{props.user.name}</a>
 						</li>
 						<li className='user-social-list'>
 							<i class="fab fa-facebook-square"/>
-							<a href='#'>ted_{props.user.name}</a>
+							<a href='#facebook'>ted_{props.user.name}</a>
 						</li>
 						<li className='user-social-list'>
 							<i class="fab fa-skype"/>
-							<a href='#'>{props.user.name}_ted</a>
+							<a href='#skype'>{props.user.name}_ted</a>
 						</li>
 					</ul>
 				</div>

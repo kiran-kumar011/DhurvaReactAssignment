@@ -34,8 +34,8 @@ export function allToDos(state=[], action) {
 		case 'ADD_TODO':
 			return [...state, action.data];
 		case 'TOGGLE_TODO':
-			var newState =	[...state].map((todo, ind) => {
-				if(action.id == todo.id) {
+			const newState =	[...state].map((todo, ind) => {
+				if(action.id === todo.id) {
 					return {...todo, isComplete: !todo.isComplete}
 				} else {
 					return todo;
@@ -43,8 +43,8 @@ export function allToDos(state=[], action) {
 			})
 			return newState;
 		case 'REMOVE_TODO':
-			var newState = [...state].filter(todo => action.id !== todo.id)
-			return newState;
+			const newArr = [...state].filter(todo => action.id !== todo.id)
+			return newArr;
 		default: 
 			return state;
 	}
