@@ -18,6 +18,7 @@ class Login extends Component {
 		if(this.props.isAuth){
 			const {from} = this.props.location.state;
 			this.props.history.push(from.pathname);
+			
 		}
 	}
 
