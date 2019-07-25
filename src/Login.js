@@ -16,15 +16,14 @@ class Login extends Component {
 
 	componentDidMount = () => {
 		if(this.props.isAuth){
-			const {from} = this.props.location.state;
+			const from = this.props.location.state.from;
 			this.props.history.push(from.pathname);
-			
 		}
 	}
 
 	componentDidUpdate = () => {
 		if(this.props.isAuth){
-			const {from} = this.props.location.state;
+			const from = this.props.location.state.from;
 			this.props.history.push(from.pathname);
 		}
 	}
