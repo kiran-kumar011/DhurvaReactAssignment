@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Users from './database/users.json';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import { getAllUsers, verifyUserToken } from './actions';
@@ -38,16 +38,14 @@ class App extends Component {
   render() {
     console.log('.......render verification', this.props.isLoggedIn)
     return (
-
       <Router>
-        <Route exact path='/' component={ Nav }></Route>
-        <Route  path='/home' component={ Home }></Route>
-        <Route  path='/login' component={ Login }></Route>
-        <Route  path='/signup' component={ Signup }></Route>
-        <Route  path='/profile' component={ Profile }></Route>
-        <PrivateRoute exact path='/home' component={Home} />
-        <PrivateRoute exact path='/' component={Nav} />
-        <PrivateRoute exact path='/profile' component={Profile} />
+        <Switch>
+          <Route path='/login' component={ Login }></Route>
+          <Route path='/signup' component={ Signup }></Route>
+          <PrivateRoute  path='/home' component={Home} />
+          <PrivateRoute exact path='/' component={Nav} />
+          <PrivateRoute  path='/profile' component={Profile} />
+        </Switch>
       </Router>
     )
   }

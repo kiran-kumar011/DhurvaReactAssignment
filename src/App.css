@@ -114,9 +114,11 @@ form label {
 
 .green {
   color: green;
+  text-align: center;
 }
 .red {
   color: red;
+  text-align: center;
 }
 
 /* home component styling */

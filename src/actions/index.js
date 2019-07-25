@@ -16,7 +16,7 @@ export function verifyUserToken(data) {
 	return dispatch => new Promise((resolve, reject) => {
 		var success	= false;
 		var user = Users.find(user => user.id === +data);
-		console.log(data, user, 'write the function to handle user verification');
+		console.log( user, 'write the function to handle user verification');
 		if(user.email) {
 			success = true;
 			dispatch({
@@ -28,10 +28,8 @@ export function verifyUserToken(data) {
 				type: 'LOGGEIN_USER',
 				data: user,
 			});
-			resolve({success})
-		} else {
-			resolve({success})
-		}
+		} 
+		resolve(success)
 	})
 }
 
@@ -43,26 +41,28 @@ export function userLogin(data) {
 		var message = '';
 			
 		var user = Users.find((user, index) => user.email === data.email);
-
-		if(user.password === data.password) {
-			message = 'logged in succesfully';
-			success = true;
-			dispatch({
-				type: 'LOGED_IN',
-				data: success,
-			});
-			dispatch({
-				type: 'LOGGEIN_USER',
-				data: user,
-			})
+		if(user) {
+			if(user.password === data.password) {
+				message = 'logged in succesfully';
+				success = true;
+				dispatch({
+					type: 'LOGED_IN',
+					data: success,
+				});
+				dispatch({
+					type: 'LOGGEIN_USER',
+					data: user,
+				})
+			} else {
+				message = 'password did not matched';
+			}
 		} else {
-			message = 'password did not matched';
+			message = 'email is invalid'
 		}
-
 		resolve({
 			success,
 			message,
-			user
+			user,
 		})
 	})
 }

@@ -14,9 +14,24 @@ class Login extends Component {
 		id: null,
 	}
 
+	componentDidMount = () => {
+		if(this.props.isAuth){
+			const {from} = this.props.location.state;
+			this.props.history.push(from.pathname);
+		}
+	}
+
+	componentDidUpdate = () => {
+		if(this.props.isAuth){
+			const {from} = this.props.location.state;
+			this.props.history.push(from.pathname);
+		}
+	}
+
 
 	handleChange = (e) => {
-		this.setState({[e.target.name] : e.target.value });
+
+		this.setState({[e.target.name] : e.target.value, message: '' });
 	}
 
 
@@ -27,24 +42,32 @@ class Login extends Component {
 			email,
 			password,
 		}
+		if(!email || !password) {
+			this.setState({message: 'please fill the form'});
+			return;
+		}
 
 		this.props.dispatch(userLogin(data)).then(res => {
 			res.success ? 
 			this.setState({
-				message: res.message, 
+				message: res.message,
 				isLoggedIn: true, 
 				id : res.user.id	
-			}) : this.setState({message: res.message})
+			}) 
+			: 
+			this.setState({message: res.message})
+
 			if(res.success) {
 				console.log('logged in succesfully');
 				setTimeout(() => {
-					localStorage.setItem('userId', this.state.id);
-					this.props.history.push('/home');
-					// if(this.props.location.state.from){
-					// 	this.props.history.push(this.props.location.state.from.pathname);
-					// } else {
-					// 	this.props.history.push('/home');
-					// }
+					var userId = res.user.id ? res.user.id : ''
+					localStorage.setItem('userId', userId);
+					if(this.props.isAuth){
+						const {from} = this.props.location.state;
+						this.props.history.push(from.pathname);
+					} else {
+						this.props.history.push('/home');
+					}
 				}, 1000)
 			}
 		});
@@ -77,7 +100,7 @@ class Login extends Component {
 } 
 
 
-export default connect()(Login);
+export default connect((state) => ({isAuth: state.isLoggedIn}))(Login);
 
 
 
