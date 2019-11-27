@@ -14,19 +14,19 @@ class Login extends Component {
 		id: null,
 	}
 
-	componentDidMount = () => {
-		if(this.props.isAuth){
-			const pathname = this.props.location.state.from ? this.props.location.state.from.pathname : '/home';
-			this.props.history.push(pathname);
-		}
-	}
+	// componentDidMount = () => {
+	// 	if(this.props.isAuth){
+	// 		const pathname = this.props.location.state.from ? this.props.location.state.from.pathname : '/home';
+	// 		this.props.history.push(pathname);
+	// 	}
+	// }
 
-	componentDidUpdate = () => {
-		if(this.props.isAuth){
-			const pathname = this.props.location.state.from ? this.props.location.state.from.pathname : '/home';
-			this.props.history.push(pathname);
-		}
-	}
+	// componentDidUpdate = () => {
+	// 	if(this.props.isAuth){
+	// 		const pathname = this.props.location.state.from ? this.props.location.state.from.pathname : '/home';
+	// 		this.props.history.push(pathname);
+	// 	}
+	// }
 
 
 	handleChange = (e) => {
